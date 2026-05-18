@@ -41,7 +41,7 @@ body {
     font-size: 16px;
     line-height: 1.6;
     color: var(--text-dark);
-    background: var(--bg-white);
+    background: #ffffff;
 }
 
 a {
@@ -84,14 +84,14 @@ svg {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 30px;
-    font-size: 15px;
+    padding: 14px 36px;
+    font-size: 16px;
     font-weight: 500;
     text-align: center;
     border: none;
     cursor: pointer;
     transition: var(--transition);
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 .btn svg {
@@ -131,8 +131,8 @@ svg {
 }
 
 .section-header {
-    text-align: center;
-    margin-bottom: 60px;
+    text-align: left;
+    margin-bottom: 40px;
 }
 
 .section-title {
@@ -200,14 +200,14 @@ svg {
 }
 
 .logo-text {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--primary-dark);
     line-height: 1.2;
 }
 
 .logo-sub {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--text-light);
     line-height: 1.2;
     font-weight: 400;
@@ -215,11 +215,11 @@ svg {
 
 .nav {
     display: flex;
-    gap: 28px;
+    gap: 36px;
 }
 
 .nav-link {
-    font-size: 15px;
+    font-size: 18px;
     color: var(--text-dark);
     padding: 8px 0;
     position: relative;
@@ -281,7 +281,7 @@ svg {
 }
 
 /* ========================================
-   Banner区
+   Banner区 - 背景图+蓝色遮罩+斜切产品区
    ======================================== */
 .banner {
     position: relative;
@@ -289,76 +289,122 @@ svg {
     min-height: 600px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 50%, #1a4a7a 100%);
     overflow: hidden;
 }
 
-.banner::before {
-    content: '';
+/* 背景图层 */
+.banner-bg {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(45, 140, 74, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 30%);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
+.banner-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+}
+
+/* 蓝色半透明遮罩 */
 .banner-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(20, 40, 80, 0.5) 0%, rgba(20, 40, 80, 0.3) 100%);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(14, 30, 60, 0.88) 0%, rgba(30, 58, 107, 0.82) 45%, rgba(45, 90, 158, 0.65) 100%);
+    z-index: 1;
+}
+
+/* 内容区域 */
+.banner-main {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .banner-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
+    width: 80%;
     color: #fff;
-    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .banner-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 20px;
-    background: rgba(45, 140, 74, 0.2);
-    border: 1px solid rgba(45, 140, 74, 0.4);
-    border-radius: 20px;
-    font-size: 14px;
-    color: var(--secondary-light);
-    margin-bottom: 24px;
+    gap: 12px;
+    padding: 14px 32px;
+    background: rgba(45, 140, 74, 0.25);
+    border: 1.5px solid rgba(61, 168, 92, 0.7);
+    border-radius: 24px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #5ddc9a;
+    margin-bottom: 34px;
     animation: fadeInUp 0.8s ease;
+    align-self: center;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(45, 140, 74, 0.3);
 }
 
 .banner-title {
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     letter-spacing: 3px;
     animation: fadeInUp 0.8s ease 0.1s both;
+    text-align: center;
+    line-height: 1.3;
 }
 
 .banner-subtitle {
-    font-size: 18px;
-    opacity: 0.95;
+    font-size: 22px;
+    opacity: 0.92;
     margin-bottom: 40px;
     font-weight: 400;
     animation: fadeInUp 0.8s ease 0.2s both;
+    text-align: center;
+    line-height: 1.6;
 }
 
 .banner-btns {
     display: flex;
-    gap: 16px;
-    justify-content: center;
+    gap: 14px;
     flex-wrap: wrap;
     animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* 右侧产品图 */
+.banner-side-img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.banner-side-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 @keyframes fadeInUp {
@@ -377,12 +423,49 @@ svg {
    ======================================== */
 .about {
     background: var(--bg-white);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 背景图 - 只在右侧显示 */
+.about-bg {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 50%;
+    height: calc(100% - 80px);
+    z-index: 0;
+}
+
+.about-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.5;
+    filter: brightness(0.9);
+}
+
+/* 白色遮罩 - 只在左侧 */
+.about-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.88);
+    z-index: 1;
+}
+
+/* 内容容器置于遮罩上方 */
+.about .container {
+    position: relative;
+    z-index: 2;
 }
 
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 40px;
     align-items: center;
 }
 
@@ -406,10 +489,11 @@ svg {
 .stat-item {
     text-align: center;
     padding: 30px 15px;
-    background: linear-gradient(135deg, var(--bg-light), var(--bg-white));
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--primary-color);
     border-radius: 12px;
     transition: var(--transition);
+    backdrop-filter: blur(4px);
 }
 
 .stat-item:hover {
@@ -729,6 +813,84 @@ svg {
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
     transform: translateX(8px);
+}
+
+/* 文章详情页 */
+.detail-page {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    background: var(--bg-white);
+}
+
+.detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.detail-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.detail-tag.monitoring {
+    background: rgba(30, 58, 107, 0.1);
+    color: var(--primary-color);
+}
+
+.detail-tag.permit {
+    background: rgba(45, 140, 74, 0.1);
+    color: var(--secondary-color);
+}
+
+.detail-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.detail-meta {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.detail-content {
+    font-size: 16px;
+    color: var(--text-gray);
+    line-height: 1.9;
+}
+
+.detail-content p {
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 40px;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background: var(--border-color);
 }
 
 .news-date {
@@ -1458,11 +1620,11 @@ svg {
     }
     
     .banner-title {
-        font-size: 34px;
+        font-size: 44px;
     }
     
     .banner-subtitle {
-        font-size: 16px;
+        font-size: 20px;
     }
     
     .section {
@@ -1558,12 +1720,12 @@ svg {
 
 @media (max-width: 480px) {
     .banner-title {
-        font-size: 28px;
+        font-size: 36px;
         letter-spacing: 2px;
     }
     
     .banner-subtitle {
-        font-size: 14px;
+        font-size: 18px;
     }
     
     .banner-btns {
@@ -1601,4 +1763,60 @@ svg {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ========================================
+   Banner区 - 响应式
+   ======================================== */
+@media (max-width: 1024px) {
+    .banner {
+        height: 100vh;
+    }
+    
+    .banner-main {
+        padding: 0 30px;
+    }
+    
+    .banner-title {
+        font-size: 42px;
+    }
+    
+    .banner-content {
+        width: 80%;
+    }
+    
+    .banner-side-img {
+        width: 48%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .banner-main {
+        padding: 60px 20px 40px;
+    }
+    
+    .banner-content {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .banner-title {
+        font-size: 26px;
+        text-align: center;
+    }
+    
+    .banner-subtitle {
+        text-align: center;
+    }
+    
+    .banner-side-img {
+        display: none;
+    }
 }
